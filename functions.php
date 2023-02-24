@@ -1,19 +1,28 @@
 <?php
 
-require('typerocket/init.php');
-require('inc/init.php');
+// Require typerocket
+include 'typerocket/init.php';
 
-function tudor_menus()
-{
 
-    $locations = array(
-        'main-menu' => 'Main Menu',
-        'top-menu' => 'Top Menu',
-        'footer-social' => 'Footer Social',
-        'privacy' => 'Privacy'
-    );
+// Require Inc
+include 'inc/init.php';
 
-    register_nav_menus($locations);
+// huggy's includes directory.
+$theme_inc_dir = 'inc';
+
+// Array of files to include.
+$theme_includes = array(
+	'/enqueue.php',  // Enqueue scripts and styles.
+);
+
+
+// Load WooCommerce functions if WooCommerce is activated.
+if ( class_exists( 'WooCommerce' ) ) {
+	$theme_includes[] = '/woocommerce.php';
 }
 
-add_action('init', 'tudor_menus');
+
+// Include files.
+foreach ( $theme_includes as $file ) {
+	require_once get_theme_file_path( $theme_inc_dir . $file );
+}
