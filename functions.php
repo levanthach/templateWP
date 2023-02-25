@@ -1,18 +1,16 @@
 <?php
 
-// Require typerocket
+// Require Typerocket
 include 'typerocket/init.php';
 
 
-// Require Inc
-include 'inc/init.php';
-
-// huggy's includes directory.
+// Require Inc 
 $theme_inc_dir = 'inc';
 
 // Array of files to include.
 $theme_includes = array(
 	'/enqueue.php',  // Enqueue scripts and styles.
+	'/init.php',  // Enqueue scripts and styles.
 );
 
 
